@@ -3,15 +3,18 @@ function selectMessage(message) {
 
     document.getElementById("result").innerHTML = message;
 
+    // iPad読み上げ
+    window.speechSynthesis.cancel();
 
-    // 音声読み上げ
-    const speech = new SpeechSynthesisUtterance(message);
+    const speech = new SpeechSynthesisUtterance();
+
+    speech.text = message;
 
     speech.lang = "ja-JP";
 
-    speech.rate = 0.9;  // ゆっくり
+    speech.rate = 0.8;
 
-    speech.pitch = 1.0;
+    speech.volume = 1;
 
     window.speechSynthesis.speak(speech);
 
